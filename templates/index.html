@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>index.html</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- extra styling -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <style>
+    img {
+    width: 100%;
+    height: auto;}
+
+    .container, body, .panel {
+    background-color: #533229;
+    color:#E6AC92;
+    }
+
+    .panel-default>.panel-heading {
+    background-color: #E6AC92 !important;
+    background-image:none !important;
+    border-color: #E6AC92 !important;
+    
+    }
+
+    .panel-default {
+    border-color: #E6AC92;
+    }
+
+    table {
+    border-color: #E6AC92;
+    }
+    
+    td, th {
+    padding:3px;
+    }
+    </style>
+
+</head>
+<body>
+    <br>
+    <div class="container" width: 90%>
+        <!-- Jumbotron -->
+        <div class="jumbotron" style="background-image: url(https://www.jpl.nasa.gov/spaceimages/images/largesize/PIA14293_hires.jpg); background-size: cover;">
+        <h1 class='text-center' style="color: #FDDFB9; font-weight: bold; text-shadow: 2px 2px 4px #000000;" >Mission to Mars</h1>
+        <p class='text-center'><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+        </div>
+        
+        <h2><strong>Latest Mars News</strong></h2>
+        <h4><strong>{{mars_data.news_data.news_title}}</strong></h4>
+        <p>{{mars_data.news_data.paragraph}}</p>
+        <br>
+        <div class='row'>
+            <div class="col-lg-8">
+                <h2><strong>Featured Mars Image</strong></h2>  
+                <img src= {{ mars_data.featured_image_url }} alt="featured_image_url">     
+            </div>
+            <div class="col-lg-4 text-left">
+                <div class="panel panel-default">
+                    <div class="panel-heading h4"><strong>Current Weather on Mars</strong></div>
+                    <div class="panel-body">
+                        {{ mars_data.mars_weather }}
+                    </div>
+                </div>
+                <br>
+                <h2>Mars Facts</h2>
+                <!-- Table -->
+                    {{mars_data.mars_facts|safe}}
+                
+            </div>
+        </div> 
+
+        <div class="row">
+            <div class='col-md-12'>
+                <h2 class="text-center"> Mars Hemispheres </h2>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class='col-md-6'>
+                <figure>
+                    <img src={{mars_data.mars_hemispheres[0].img_url}} alt="Mars hemisphere 1">
+                    <figcaption class="h4 text-center"> {{mars_data.mars_hemispheres[0].title }} </figcaption>
+                </figure>
+            </div>
+            <div class='col-md-6'>
+                <figure>
+                    <img src={{mars_data.mars_hemispheres[1].img_url}} alt="Mars hemisphere 2">
+                    <figcaption class="h4 text-center"> {{mars_data.mars_hemispheres[1].title }} </figcaption>
+                </figure>
+            </div>
+        </div>
+        <div class="row">
+            <div class='col-md-6'>
+                <figure>
+                    <img src={{mars_data.mars_hemispheres[2].img_url}} alt="Mars hemisphere 3">
+                    <figcaption class="h4 text-center"> {{mars_data.mars_hemispheres[2].title }} </figcaption> 
+                </figure>
+            </div>
+            <div class='col-md-6'>
+                <figure>
+                    <img src={{mars_data.mars_hemispheres[3].img_url}} alt="Mars hemisphere 4">
+                    <figcaption class="h4 text-center"> {{mars_data.mars_hemispheres[3].title }} </figcaption>
+                </figure>
+            </div>
+        </div>       
+     
+
+
+
+    </div>  
+
+</body>
+</html>
+
